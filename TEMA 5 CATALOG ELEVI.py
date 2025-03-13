@@ -1,10 +1,10 @@
 
 print('Bine ati venit! ')
 
-catalog = list()
+lista_catalog = list()
 
 # Pentru teste
-catalog = [['Gherlea','Vlad',10,10,10,10],['Anca','Nechiti',8,7,8,8.7]]
+lista_catalog = [{'Nume':'Gherlea','Prenume':'Vlad','Nota romana':10,'Nota matematica':9,'Nota engleza':10,'Media':9.5}]
 
 # functie pentru introducerea datelor unui elev
 def functie_introducere_elev(nume, prenume, nota_romana,nota_matematica,nota_engleza):
@@ -15,7 +15,29 @@ def functie_introducere_elev(nume, prenume, nota_romana,nota_matematica,nota_eng
     nota_engleza = float(input('Nota pentru materia "Engleza" : '))
     media = round(((nota_romana + nota_matematica + nota_engleza)/3),2)
 
-    return nume,prenume,nota_romana,nota_matematica,nota_engleza,media
+    dict_catalog = {
+        'Nume':nume,
+        'Prenume':prenume,
+        'Nota romana':nota_romana,
+        'Nota matematica':nota_matematica,
+        'Nota engleza':nota_engleza,
+        'Media':media
+    }
+
+    return dict_catalog
+
+# functie incompleta 
+def functie_cautare_elev(nume,prenume):
+    nume = input('Va rugam introduceti numele elevului dorit : ')
+    prenume = input('Va rugam introduceti prenumele elevului dorit : ')
+
+    for element in lista_catalog:
+        if element['Nume'] == nume and element['Prenume'] == prenume:
+            return print(element)
+        
+        else:
+            return print(f'Nu a fost gasit nici un elev cu numele: {nume} si prenumele : {prenume}. Verificati datele! ')
+#
 
 
 while True:
@@ -33,11 +55,8 @@ while True:
     8. Afisare elevi in ordine alfabetica (in functie de Nume)
     9. Iesire din program #done 
     ''')
-    optiunea_aleasa_de_utilizator = int(input('Optiunea aleasa : ')) # utilizatorul trebuie sa introduca numarul aferent operatiunii dorite
 
-    if optiunea_aleasa_de_utilizator == 9:
-        print('La nevedere!')
-        break
+    optiunea_aleasa_de_utilizator = int(input('Optiunea aleasa : ')) # utilizatorul trebuie sa introduca numarul aferent operatiunii dorite
 
     if optiunea_aleasa_de_utilizator == 1:
         x = True
@@ -45,15 +64,15 @@ while True:
         
             print('Ati ales operatiunea "1. Adaugare elev"\nIntroduceti datele necesare:')
 
-            lista_date_elev = list(functie_introducere_elev('default','default',0,0,0))
+            date_elev = functie_introducere_elev('default','default',0,0,0)
         
-            print(f'Datele introduse sunt urmatoarele: {lista_date_elev} ! ') 
+            print(f'Datele introduse sunt urmatoarele: {date_elev} ! ') 
             commit_modificari = input('Doriti adaugarea lor in catalog? (Da/Nu) : ').lower() == 'da'
 
             if commit_modificari:
-                catalog.append(lista_date_elev)
+                lista_catalog.append(date_elev)
                 print('Datele elevului au fost adaugate cu succes! ')
-
+                
                 continuare_introducere_elev = input('Doriti sa mai adaugati un alt elev? (Da/Nu) : ').lower() == 'da'
 
                 if continuare_introducere_elev:
@@ -69,13 +88,11 @@ while True:
                     x = False
             
 
-    
     elif optiunea_aleasa_de_utilizator == 2:
         print('Ati ales operatiunea "2. Afisarea elevi existenti " ')
         print('Elevi existenti in catalog : ')
-        previzualizare = True
-        while previzualizare == True:
-            for element in catalog:
+        while True:
+            for element in lista_catalog:
                 print(element)
             
             inchidere_previzualiare = input('Introduceti "x" in cazul in care doriti inchiderea previzualizarii catalogului : ').lower() == 'x'
@@ -83,8 +100,12 @@ while True:
                 break
 
     elif optiunea_aleasa_de_utilizator == 3:
+        
         print('x')
-
+    
+    elif optiunea_aleasa_de_utilizator == 9:
+        print('La nevedere!')
+        break
 
             
 

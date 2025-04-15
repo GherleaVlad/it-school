@@ -1,0 +1,16 @@
+[
+    {
+        "nume": "Popescu",
+        "prenume": "Andrei",
+        "CNP": "1234567890123",
+        "IBAN": "RO01BGV123456",
+        "sold": 250.0
+    },
+    {
+        "nume": "Gherlea",
+        "prenume": "Vlad",
+        "CNP": "1990421055058",
+        "IBAN": "RO01BGV874257",
+        "sold": 1.0
+    }
+]

@@ -25,12 +25,12 @@ class Client:
 class BazaDeDate:
     ''' In cadrul clasei sunt aduse date din fisiere json (pentru a vedea baza de date cu clientii) si sunt scrise in baza de date cu clientii noile inregistrari'''
 
-    def get_clienti(fisier_json = r'C:\Users\vlad.gherlea\Desktop\aplicatie banca\clienti.json'):
+    def get_clienti(fisier_json = r'C:\Users\vladg\OneDrive\Documents\GitHub\it-school\aplicatie banca\clienti.json'):
         with open(fisier_json, 'r') as json_bd_clienti:
             baza_de_date_clienti = json.load(json_bd_clienti)
         return list(baza_de_date_clienti)
 
-    def set_client(client,bd_clienti = r'C:\Users\vlad.gherlea\Desktop\aplicatie banca\clienti.json'):
+    def set_client_nou(client,bd_clienti = r'C:\Users\vladg\OneDrive\Documents\GitHub\it-school\aplicatie banca\clienti.json'):
 
         bd = BazaDeDate.get_clienti()
 
@@ -51,6 +51,10 @@ class BazaDeDate:
                 json.dump(bd,json_bd_client,indent=4)
             
             print(f'{client}\nA fost adaugat cu succes!')
+    
+    def set_client_modificari(bd_modificata, bd_clienti = r'C:\Users\vladg\OneDrive\Documents\GitHub\it-school\aplicatie banca\clienti.json'):
+        with open(bd_clienti, 'w') as json_bd_client:
+            json.dump(bd_modificata,json_bd_client,indent=4)
         
 class Banca:
     def generare_iban():
@@ -88,30 +92,111 @@ class Banca:
         bd = BazaDeDate.get_clienti()
 
         exista = False
-        for clienti in bd:
-            if clienti.get('CNP') == cnp_cautat:
-
+        for client in bd:
+            if client.get('CNP') == cnp_cautat:
+                client_cautat = client
                 exista = True
-# aici am ramas
-                if exista:
-                    print('-'*50)
-                    for client,date in clienti.items():
-                        print(f'{client} : {date}')
-                    print('-'*50)
-            else:
-                print(F'Nu a fost gasit un client in baza de date cu CNP : {cnp_cautat}')
+        if exista:
+            print('-'*50)
+            for client,date in client_cautat.items():
+                print(f'{client.upper()} : {date}')
+            print('-'*50)
+            
+        if not exista:
+            print(f'Nu a fost gasit un client in baza de date cu CNP : {cnp_cautat}')
                     
+    def depunere_bani():
+        bd = BazaDeDate.get_clienti()
+        cnp_cautat = input('Introduceti CNP pentru cautare: ')
+        exista = False
+        for client in bd:
+            if client.get('CNP') == cnp_cautat:
+                date_modificare = client
+                exista = True
+                break
 
+        if not exista:
+            print(f'Nu a fost gasit un client in baza de date cu CNP : {cnp_cautat}')
+        else:
+            index_dict_client = bd.index(date_modificare)
+            suma_depusa = float(input('Introduceti suma depusa: '))
+            sold_nou = date_modificare.get('sold') + suma_depusa
+            date_modificare.update({'sold': sold_nou})
+            bd[index_dict_client] = date_modificare
 
-    
-    def adaugare_bani():
-        pass
+            BazaDeDate.set_client_modificari(bd)
     
     def retragere_bani():
-        pass
+        bd = BazaDeDate.get_clienti()
+        cnp_cautat = input('Introduceti CNP pentru cautare: ')
+        exista = False
+        for client in bd:
+            if client.get('CNP') == cnp_cautat:
+                date_modificare = client
+                exista = True
+                break
+
+        if not exista:
+            print(f'Nu a fost gasit un client in baza de date cu CNP : {cnp_cautat}')
+        else:
+            index_dict_client = bd.index(date_modificare)
+            suma_retrasa = float(input('Introduceti suma depusa: '))
+            sold_nou = date_modificare.get('sold') - suma_retrasa
+            date_modificare.update({'sold': sold_nou})
+            bd[index_dict_client] = date_modificare
+
+            BazaDeDate.set_client_modificari(bd)
 
 class Rapoarte:
     pass
 
-client = Banca.cautare_client()
+def main():
+    # Functionalitatea efectiva a programului
+
+    while True:
+        optiune = int(input('''
+Selectati una dintre variantele de mai jos aferenta operatiunii dorite:
+        1. Adaugare client nou
+        2. Cautare client
+        3. Depunere bani (pe baza CNP)
+        4. Retragere bani (pe baza CNP)
+        5. Iesire din program
+                                
+Optiune aleasa: '''))
+        if optiune == 1:
+            while True:
+                client = Banca.adaugare_client_nou()
+                BazaDeDate.set_client_nou(client)
+                
+                continuare_adaugare = input('Doriti adaugarea unui alt client? (Da/Nu) : ').lower() == 'da'
+
+                if not continuare_adaugare:
+                    break
+        elif optiune == 2:
+            while True:
+                Banca.cautare_client()
+                continuare_cautare = input('Doriti cautarea unui alt client? (Da/Nu) : ').lower() == 'da'
+
+                if not continuare_cautare:
+                    break
+        elif optiune == 3:
+            Banca.depunere_bani()
+            continuare_depunere = input('Doriti efectuarea unei alte depuneri? (Da/Nu) : ').lower() == 'da'
+
+            if not continuare_depunere:
+                break
+        
+        elif optiune == 4:
+            Banca.retragere_bani()
+            continuare_retragere = input('Doriti efectuarea unei alte retrageri? (Da/Nu) : ').lower() == 'da'
+
+            if not continuare_retragere:
+                break
+        elif optiune == 5:
+            break
+        else:
+            print('Nu ati ales o optiune valida')
+
+if __name__ == "__main__":
+    main()
 

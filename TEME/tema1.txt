@@ -1,0 +1,159 @@
+1) Avem 2 numere intregi. Sa se afiseze catul si restul impartirii numerelor.
+
+x = 15
+y = 2
+z = x // y
+v = x % y
+print(z)
+print(v)
+
+2) Avem 2 numere intregi. Sa se afiseze rezultatele ridicarii la putere a celor doua numere.
+
+x = 15
+y = 2
+z = x ** y
+print(z)
+
+3) Avem 2 numere intregi. Sa se afiseze daca cel de al doilea numar este divizibil cu primul.
+
+x = 4
+y = 2
+
+if y%x == 0:
+    print('Este divizibil')
+else: 
+    print('Nu este divizibil')
+	
+4) Avem un numar aleatoriu. Sa se afiseze daca numarul este par sau impar.
+
+x = 15
+if x % 2 == 0 : 
+    print('PAR')
+else:
+    print('impar')
+	
+5) Se citeste de la tastatura un numar. Sa se verifice daca numarul se afla in intervalul 100-150.
+
+x = float(input('Introduceti un numar : '))
+if x >= 100 and x =< 150 :
+    print('Numarul se afla in intervalul 100 - 150')
+else : 
+    print('Numarul nu se afla in intervalul 100 - 150')
+
+6) Se citeste un numar de la tastatura. Sa se verifice daca numarul este mai mic decat 50 sau mai mare decat 100.
+
+x = float(input('Introduceti un numar : '))
+if x < 50 or x > 100 :
+    print('Numarul este mai mic decat 50 sau mai mare decat 100')
+else : 
+    print('Numarul nu este nici mai mic ca 50 nici mai mare decat 100')
+
+7) Se citesc doua numere de la tastatura. Sa se determine tipul celor doua numere int/float si sa se afiseze rezultatele verificarii.
+nr1 = input("Intrudu primul numar: ")
+nr2 = input("Intrudu al doilea numar: ")
+
+if "." in nr1:
+    print(f"Primul numar este 'float'.")
+else:
+    print(f"Primul numar este 'integer'.")
+
+
+if "." in nr2:
+    print(f"Primul numar este 'float'.")
+else:
+    print(f"Al doilea numar este 'integer'.")
+--------
+8) Se citesc doua numere de la tastatura. Sa se determine care dintre cele doua este mai mare si sa se afiseze un mesaj corespunzator.
+x = float(input('Introduceti primul numar : '))
+y = float(input('Introduceti al doilea numar : '))
+
+if x > y :
+    print ('x este mai mare ca si y')
+if y > x :
+    print('y este mai mare ca si x')
+
+9) Se citesc doua string-uri de la tastatura. Sa se determine daca primul string se regaseste in cel de al doilea string.
+x = input('Introduceti primul numar : ')
+y = input('Introduceti al doilea numar : ')
+
+if x in y :
+    print ('primu intra in al doilea')
+
+10) Se da urmatorul string: "Ana are 10 mere si 5 pere.". Sa se extraga cuvantul "pere" din propozitie si sa se afiseze.
+x = "Ana 10 mere si 5 pere "
+
+start = x.find('pere')
+stop = start+len('pere')
+print(x[start:stop])
+print(len('pere'))
+print(start)
+print(stop)
+
+
+11) Se citeste un sir de numere de la tastatura separate prin virgula. Se citeste un numar de la tastatura. Sa se verifice daca numarul face parte din lista.
+
+x = input('Introdu un sir de numere separate prin virgula : ')
+y = input('Introdu un numar de verificare : ')
+
+z = x.split(',')
+print(z)
+if y in z :
+    print('Se regaseste')
+else :
+    print('Nu se regaseste')
+
+
+12) Se citesc doua numere de la tastatura. Sa se determine care dintre cele doua numere este mai mic si daca este un numar par sa se afiseze un mesaj corespunzator.
+
+x = float(input('Introdu un numar : '))
+y = float(input('Introdu al doilea numar : '))
+
+if x < y :
+    print(f'Numarul {x} este mai mic decat numarul {y}')
+elif x > y :
+    print(f'Numarul {y} este mai mic decat numarul {x}')
+
+
+13) Se citeste un numar de la tastatura. Sa se afiseze un mesaj corespunzator in cazul in care numarul este divizibil cu 3 sau cu 5.
+
+x = float(input('Introdu un numar : '))
+
+if x % 3 == 0 or x % 5 == 0 :
+    print('MESAJ CORESPUNZATOR')
+else :
+    print('SA VA FIE RUSINE')
+
+
+14) Se citeste un numar de la tastatura. Sa se afiseze "fizz" daca numarul e divizibil cu 3, sa se afiseze "buzz" daca numarul este divizibil 
+cu 5 si "fizzbuzz" daca numarul este divizibil si cu 3 si cu 5.
+
+x = float(input('Introdu un numar : '))
+
+if x % 3 == 0 :
+    print('FIZZ')
+if x % 5 == 0 :
+    print('BUZZ')
+if x % 3 == 0 and x % 5 == 0 : 
+    print('FIZZBUZZ')
+
+15) Se da urmatorul string: "Nume: Daniel, Prenume: Neamtiu". Sa se extraga numele si prenumele din acest string si sa se afiseze de la tastatura.
+x = "Nume: Daniel, Prenume: Neamtiu"
+
+y = x.split(',')
+print(y[0])
+print(y[1].lstrip(' '))
+
+16) Se da urmatorul string: "mere, pere, mere, mere, pere, struguri". Sa se afiseze de cate ori apare cuvantul "pere" in string.
+
+x = 'mere, pere, mere, mere, pere, struguri'
+print(f'pere se afiseaza de : {x.count("pere")}')
+
+17) Se da urmatorul string: "Ana are 10 mingi de fotbal intergalactic". Sa se stearga cuvantul intergalactic din string si sa se afiseze rezultatul.
+
+x = "Ana are 10 mingi de fotbal intergalactic"
+y = x.replace('intergalactic','')
+print(y)
+
+Se citeste de la tastatura o parola. Sa se verifice daca parola introdusa are cel putin 10 caractere si nu contine spatiu. 
+Sa se afiseze un mesaj corespunzator pentru fiecare neregula gasita sau mesajul 
+"OK" in cazul in care parola respecta regulile.

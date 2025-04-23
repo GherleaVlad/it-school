@@ -1,4 +1,16 @@
 
+'''
+MODULUL class_Angajat CUPRINDE CLASA ANGAJAT IN CADRUL CARUIA ESTE CREAT UN OBIECT (ANGAJATUL IN SINE) SI CARE CUPRINDE DE ASEMENEA NISTE METODE, ACESTEA FIIND: 
+- citire_date_angajat() -> ACEASTA METODA CITESTE DATELE UNUI ANGAJAT SI RETURNEAZA OBIECTUL ANGAJAT PENTRU UTILIZAREA ULTERIOARA A DATELOR: VERIFICARE EXISTENTA, ADAUGARE ANGAJAT NOU, ETC.
+- prezentare_angajat(self) -> ACEASTA METODA CARE ARE NEVOIE DE ARGUMENTUL SELF (ADICA DATELE OBIECTULUI ANGAJAT) ARE ROLUL DE A PREZENTA DATELE INTRODUSE DESPRE UN ANGAJAT
+- angajat_to_dict(self) -> ACEASTA METODA CARE DE ASEMENEA ARE NEVOIE DE ARGUMENTUL SELF (ADICA DE DATELE OBIECTULUI ANGAJAT), ASA CUM II SPUNE SI NUMELE ARE ROLUL
+DE A TRANSFORM IN DICTIONAR OBIECTUL ANGAJAT (PENTRU DIFERITE UTILIZARI IN ALTE ARII ALE APLICATIEI)
+
+ULTIMA PARTE DIN ACEASTA CLASA PERMITE EFECTUAREA DE TESTE, IN SENSUL CA DACA FISIERUL ACESTA ESTE MAIN CODUL SE VA EXECUTA, IN CAZ CONTRAR INSEAMNA CA MODULUL ACESTA ESTE 
+IMPORTAT INTR-UN ALT FISIER.
+
+'''
+
 class Angajat:
     def __init__(self,numeangajat,prenumeangajat,CNP,varsta,salar,departament,senioritate):
         self.numeangajat = numeangajat
@@ -106,7 +118,7 @@ Alegeti senioritatea angajatului introducand cifra aferenta acesteia:
 
     def prezentare_angajat(self):
         print(50 * '-')
-        print(f'ANGAJATUL:\nNUME: {self.numeangajat}\nPRENUME: {self.prenumeangajat}\nCNP : {self.CNP}\nVARSTA : {self.varsta}\nSALAR: {self.salar}\nDEPARTAMENT: {self.departament}\nSENIORITATE: {self.senioritate}')
+        print(f'NUME: {self.numeangajat}\nPRENUME: {self.prenumeangajat}\nCNP : {self.CNP}\nVARSTA : {self.varsta}\nSALAR: {self.salar}\nDEPARTAMENT: {self.departament}\nSENIORITATE: {self.senioritate}')
         print(50 * '-')
 
     def angajat_to_dict(self):

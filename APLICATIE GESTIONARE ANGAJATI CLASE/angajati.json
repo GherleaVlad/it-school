@@ -1,0 +1,11 @@
+[
+    {
+        "NUME": "Gherlea",
+        "PRENUME": "Vlad",
+        "CNP": "0000000000000",
+        "VARSTA": 25,
+        "SALAR": 20000.0,
+        "DEPARTAMENT": "Contabilitate",
+        "SENIORITATE": "Junior"
+    }
+]

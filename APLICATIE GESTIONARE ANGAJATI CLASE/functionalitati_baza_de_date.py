@@ -25,7 +25,7 @@ class BazaDeDate:
         with open(fisier_json, 'w') as json_angajati:
             json.dump(bd_noua,json_angajati,indent=4)
     
-    def verificare_existenta_angajat(angajat):
+    def verificare_existenta_angajat_adaugare(angajat):
 
         baza_date = BazaDeDate.get_angajati()
         angajat_dictionar = class_Angajat.Angajat.angajat_to_dict(angajat)
@@ -39,24 +39,28 @@ class BazaDeDate:
             return True
         else:
             return False
-
-    def return_angajat_bd_to_dict(angajat):
-        
+    
+    def verificare_existenta_angajat_dupa_cnp(cnp):
         baza_date = BazaDeDate.get_angajati()
-        angajat_dictionar = class_Angajat.Angajat.angajat_to_dict(angajat)
+        cnp_cautat = cnp
 
+        exista = False
         for angajat_element in baza_date:
-            if angajat_dictionar.get('CNP') == angajat_element.get('CNP'):
-                return angajat_element
+            if cnp_cautat == angajat_element.get('CNP'):
+                exista = True
+
+        if exista:
+            return True
+        else:
+            return False
 
 def main():
 
     print(BazaDeDate.get_angajati())
     angajat = class_Angajat.Angajat.citire_date_angajat()        
 
-    if BazaDeDate.verificare_existenta_angajat(angajat):
+    if BazaDeDate.verificare_existenta_angajat_adaugare(angajat):
         print('ANGAJATUL EXISTA DEJA IN BAZA DE DATE')
-        print(BazaDeDate.return_angajat_bd_to_dict(angajat))
 
     else:
         baza_date = BazaDeDate.get_angajati()

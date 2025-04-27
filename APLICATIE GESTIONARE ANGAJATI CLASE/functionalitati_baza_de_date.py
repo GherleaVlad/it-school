@@ -7,7 +7,13 @@ ACEST MODUL ARE URMATOARELE METODE/ FUNCTII:
 CALEA CATRE FISIERUL JSON
  - set_angajati(bd_noua,fisier_json) -> ACEASTA METODA ARE ROLUL DE A SETA BAZA DE DATE - ESTE UTILIZATA PENTRU SCRIEREA DATELOR IN BAZA DE DATE - IAR PENTRU FUNCTIONAREA EI ESTE
  NEVOIE DE DOUA ARGUMENTE BAZA DE DATE NOUA SI FISIERUL JSON (CALEA CATRE ACESTA) UNDE SA SCRIE ACESTE DATE
-
+ - verificare_existenta_angajt_adaugare(angajta) -> ACEASTA METODA ARE ROLUL DE A VERIFICA EXISTENTA UNUI ANGAJAT IN BAZA DE DATE FIIND FOLOSITA 
+ IN MOMENTUL ADAUGARII UNUI ANGAJAT IN BAZA DE DATE
+ - verificare_existenta_angajat_dupa_cnp(cnp) -> ACEASTA METODA ESTE FOLOSITA PENTRU VERIFICARE EXISTENTEI UNUI ANGAJAT IN BAZA DE DATE SI ESTE FOLOSITA
+ IN CADRUL MAJORITATII METODELOR DIN CADRUL CLASEI COMPANIE (IN MOMENTUL CAUTARII UNUI ANGAJAT DUPA CNP IN VEDEREA MODIFICARII DATELOR ACESTUIA SI IN MOMENTUL
+ CAUTARII IN ALTE SCOPURI CUM AR FI CALCULAREA FLUTURASULUI DE SALARIU )
+ 
+- get_cale_fisier_json() -> ACEASTA FUNCTIE RETURNEAZA CALEA FISIERULUI JSON PENTRU A FI FOLOSITA IN FUNCTIILE DE GET SI SET BD
 
 '''
 
@@ -16,12 +22,18 @@ import json as json
 import os as os
 
 class BazaDeDate:
+    def get_cale_fisier_json():
 
-    def get_angajati(fisier_json = r'C:\Users\vladg\OneDrive\Documents\GitHub\it-school\APLICATIE GESTIONARE ANGAJATI CLASE\angajati.json'):
+        director_curent = os.path.dirname(os.path.abspath(__file__))
+        cale_json = os.path.join(director_curent, 'angajati.json')
+        
+        return cale_json
+
+    def get_angajati(fisier_json = get_cale_fisier_json()):
         with open(fisier_json, 'r') as  json_angajati:
             return list(json.load(json_angajati))
     
-    def set_angajati(bd_noua,fisier_json = r'C:\Users\vladg\OneDrive\Documents\GitHub\it-school\APLICATIE GESTIONARE ANGAJATI CLASE\angajati.json'):
+    def set_angajati(bd_noua,fisier_json = get_cale_fisier_json()):
         with open(fisier_json, 'w') as json_angajati:
             json.dump(bd_noua,json_angajati,indent=4)
     

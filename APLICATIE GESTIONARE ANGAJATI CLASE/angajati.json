@@ -1,11 +1,29 @@
 [
     {
-        "NUME": "Gherleanu",
+        "NUME": "Gherlea",
         "PRENUME": "Vlad",
         "CNP": "0000000000000",
-        "VARSTA": 25,
-        "SALAR": 20000.0,
+        "VARSTA": 30,
+        "SALAR": 10000,
+        "DEPARTAMENT": "IT",
+        "SENIORITATE": "Senior"
+    },
+    {
+        "NUME": "Gherleanu",
+        "PRENUME": "Vladinho",
+        "CNP": "0000000000001",
+        "VARSTA": 55,
+        "SALAR": 100000000,
         "DEPARTAMENT": "Contabilitate",
+        "SENIORITATE": "Mid"
+    },
+    {
+        "NUME": "Gherlescu",
+        "PRENUME": "Vladut",
+        "CNP": "0000000000002",
+        "VARSTA": 30,
+        "SALAR": 500000,
+        "DEPARTAMENT": "IT",
         "SENIORITATE": "Junior"
     }
 ]

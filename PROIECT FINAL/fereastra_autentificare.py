@@ -7,6 +7,7 @@ class FereastraAutentificare(tkinter.Toplevel):
         super().__init__(master) # Initializare constructor pentru clasa parinte (adica pentru clasa MeniuPrincipal - care reprezinta tkinter.Tk (clasa principala - radacina))
         self.title('Autentificare') # Numele ferestrei
         self.resizable(False, False) # Dimensiunea nu este modificabila
+        self.update_idletasks() # Asteapta initializarea completa a aplicatiei si abia apoi o deschide
         self.geometry(utilities.pozitionare_fereastra_pe_ecran(self,350,180)) # Setam geometria si centrarea pe ecran folosind functia pozitionare_fereastra_pe_ecran cu parametrii fiind dimensiunea dorita a ferestrei
 
         # Label si Entry pentru autentificare utilizator + pozitionare
@@ -37,9 +38,13 @@ class FereastraAutentificare(tkinter.Toplevel):
         parola = self.entry_parola.get()
         date_utilizator = baza_de_date.cautare_operator(utilizator,parola) # Apelam functia de cautare operator din modulul baza de date pentru credentiale
 
-        if date_utilizator:
+        if date_utilizator[3] == 1:
             self.destroy()  # Inchide fereastra de login
-            self.master.deschide_meniu_principal()  # Apeleaza metoda din aplicatia principala
+            self.master.deschide_meniu_principal_admin()  # Apeleaza metoda din aplicatia principala
+
+        elif date_utilizator[3] != 1:
+            self.destroy()  # Inchide fereastra de login
+            self.master.deschide_meniu_principal_operator()
         else:
             self.eroare_autentificare.config(text= 'Utilizator sau parola gresita!') # Mesajul de eroare afisat in cazul in care utilizatorul si parola nu se potrivesc
 

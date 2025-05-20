@@ -10,3 +10,6 @@ if __name__ == '__main__':
     baza_de_date.creare_tabela_pacienti()
     app = MeniuPrincipal()
     app.mainloop()
+
+
+# admin    

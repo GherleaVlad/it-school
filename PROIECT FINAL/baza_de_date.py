@@ -27,13 +27,27 @@ def creare_tabela_operatori():
         CREATE TABLE IF NOT EXISTS Operatori(
                        IdOperator INTEGER PRIMARY KEY AUTOINCREMENT,
                        utilizator TEXT,
-                       parola text,
+                       parola TEXT,
                        administrator INTEGER)''')
         conexiune.commit()
 
 
 def creare_tabela_pacienti():
-    pass
+    with conectare_baza_date() as conexiune:
+        cursor = conexiune.cursor()
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Pacienti(
+                       IdPacient INTEGER PRIMARY KEY AUTOINCREMENT,
+                       nume TEXT,
+                       prenume TEXT,
+                       data_nastere TEXT,
+                       varsta INTEGER,
+                       CNP INTEGER,
+                       sectie TEXT)''')
+        conexiune.commit()
+
+
+
 
 
 # Functii pentru operatiuni CRUD (create, read, update, delete) pentru tabelele pacienti si operatori

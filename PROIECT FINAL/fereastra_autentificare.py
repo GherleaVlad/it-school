@@ -38,13 +38,18 @@ class FereastraAutentificare(tkinter.Toplevel):
         parola = self.entry_parola.get()
         date_utilizator = baza_de_date.cautare_operator(utilizator,parola) # Apelam functia de cautare operator din modulul baza de date pentru credentiale
 
-        if date_utilizator[3] == 1:
+        # Pentru teste
+        if 1 == 1:
             self.destroy()  # Inchide fereastra de login
             self.master.deschide_meniu_principal_admin()  # Apeleaza metoda din aplicatia principala
 
-        elif date_utilizator[3] != 1:
-            self.destroy()  # Inchide fereastra de login
-            self.master.deschide_meniu_principal_operator()
+        # if date_utilizator[3] == 1:
+        #     self.destroy()  # Inchide fereastra de login
+        #     self.master.deschide_meniu_principal_admin()  # Apeleaza metoda din aplicatia principala
+
+        # elif date_utilizator[3] != 1:
+        #     self.destroy()  # Inchide fereastra de login
+        #     self.master.deschide_meniu_principal_operator()
         else:
             self.eroare_autentificare.config(text= 'Utilizator sau parola gresita!') # Mesajul de eroare afisat in cazul in care utilizatorul si parola nu se potrivesc
 

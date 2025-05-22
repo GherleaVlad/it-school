@@ -41,17 +41,17 @@ class DatePacient(ttk.Frame):
 
         # LABEL + ENTRY PENTRU NUMELE PACIENTULUI
         tkinter.Label(self.frame_date_personale,text='NUME: ').grid(column=0,row=0,padx=5,pady=5)
-        self.entry_nume = tkinter.Entry(self.frame_date_personale,width=25)
+        self.entry_nume = tkinter.Entry(self.frame_date_personale,width=26)
         self.entry_nume.grid(column=1,row=0,padx=5,pady=5)
 
         # LABEL + ENTRY PENTRU PRENUMELE PACIENTULUI
         tkinter.Label(self.frame_date_personale,text='PRENUME: ').grid(column=0,row=1,padx=5,pady=5)
-        self.entry_prenume = tkinter.Entry(self.frame_date_personale,width=25)
+        self.entry_prenume = tkinter.Entry(self.frame_date_personale,width=26)
         self.entry_prenume.grid(column=1,row=1,padx=5,pady=5)
 
         # LABEL + ENTRY PENTRU DATA DE NASTERE A PACIENTULUI
         tkinter.Label(self.frame_date_personale,text='DATA NASTERE: ').grid(column=0,row=2,padx=5,pady=5)
-        self.entry_varsta = tkinter.Entry(self.frame_date_personale,width=25)
+        self.entry_varsta = tkinter.Entry(self.frame_date_personale,width=26)
         self.entry_varsta.grid(column=1,row=2,padx=5,pady=5)
 
         # LABEL PENTRU VARSTA PACIENTULUI (CALCULATA AUTOMAT IN FUNCTIE DE VARSTA)
@@ -60,7 +60,7 @@ class DatePacient(ttk.Frame):
 
         # LABEL + ENTRY PENTRU DATA DE NASTERE A PACIENTULUI
         tkinter.Label(self.frame_date_personale,text='CNP: ').grid(column=0,row=4,padx=5,pady=5)
-        self.entry_cnp = tkinter.Entry(self.frame_date_personale,width=25)
+        self.entry_cnp = tkinter.Entry(self.frame_date_personale,width=26)
         self.entry_cnp.grid(column=1,row=4,padx=5,pady=5)
 
         # LABEL + ENTRY PENTRU DATA DE NASTERE A PACIENTULUI
@@ -85,7 +85,7 @@ class DatePacient(ttk.Frame):
 
         # LABEL + ENTRY PENTRU BILETUL DE TRIMITERE
         tkinter.Label(self.frame_date_internare,text='BILET TRIMITERE: ').grid(column=0,row=2,padx=5,pady=5)
-        self.entry_bilet_trimitere = tkinter.Entry(self.frame_date_internare, width=25)
+        self.entry_bilet_trimitere = tkinter.Entry(self.frame_date_internare, width=26)
         self.entry_bilet_trimitere.grid(column=1,row=2,padx=5,pady=5)
 
         # LABEL + ENTRY PENTRU MEDICUL CURANT
@@ -95,7 +95,7 @@ class DatePacient(ttk.Frame):
 
         # LABEL + ENTRY PENTRU DIAGNOSTIC INITIAL
         tkinter.Label(self.frame_date_internare,text='DIAGNOSTIC: ').grid(column=0,row=4,padx=5,pady=5)
-        self.entry_diagnostic = tkinter.Entry(self.frame_date_internare, width=25)
+        self.entry_diagnostic = tkinter.Entry(self.frame_date_internare, width=26)
         self.entry_diagnostic.grid(column=1,row=4,padx=5,pady=5)
 
 

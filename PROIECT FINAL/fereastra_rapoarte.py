@@ -1,6 +1,11 @@
 import tkinter
 import utilities
 
+'''
+Modulul fereastra_rapoarte este folosita pentru vizualizarea, tiparirea si exportul rapoartelor.
+
+'''
+
 class FereastraRapoarte(tkinter.Toplevel):
     def __init__(self, master): # Initializare constructor pentru clasa Fereastra Rapoarte (reprezinta tkinter.TopLevel - clasa copil pentru tkinter.Tk)
         super().__init__(master) # Initializare constructor pentru clasa parinte (adica pentru clasa MeniuPrincipal - care reprezinta tkinter.Tk (clasa principala - radacina))

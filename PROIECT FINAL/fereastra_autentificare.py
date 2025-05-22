@@ -2,12 +2,18 @@ import tkinter
 import baza_de_date
 import utilities
 
+'''
+Modulul fereastra_autentificare este folosit pentru crearea ferestrei de autentificare in aplicatie si contine clasa FereastraAutentificare, in cadrul careia se afla metoda
+verificare_login, folosit pentru verificarea datelor introduse de operator pentru autentificarea in aplicatie. 
+In cazul autentificarii cu succes, aplicatia intra in meniul principal, iar in caz contrar afiseaza un label care ne informeaza ca utilizatorul si parola introduse sunt incorecte.
+'''
+
 class FereastraAutentificare(tkinter.Toplevel):
     def __init__(self, master): # Initializare constructor pentru clasa Fereastra Autentificare (reprezinta tkinter.TopLevel - clasa copil pentru tkinter.Tk)
         super().__init__(master) # Initializare constructor pentru clasa parinte (adica pentru clasa MeniuPrincipal - care reprezinta tkinter.Tk (clasa principala - radacina))
         self.title('Autentificare') # Numele ferestrei
         self.resizable(False, False) # Dimensiunea nu este modificabila
-        self.update_idletasks() # Asteapta initializarea completa a aplicatiei si abia apoi o deschide
+       # self.update_idletasks() # Asteapta initializarea completa a aplicatiei si abia apoi o deschide
         self.geometry(utilities.pozitionare_fereastra_pe_ecran(self,350,180)) # Setam geometria si centrarea pe ecran folosind functia pozitionare_fereastra_pe_ecran cu parametrii fiind dimensiunea dorita a ferestrei
 
         # Label si Entry pentru autentificare utilizator + pozitionare

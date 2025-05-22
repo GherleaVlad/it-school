@@ -1,6 +1,11 @@
 import tkinter
 import utilities
 
+'''
+Modulul fereastra_sectii este destinat adaugarii/editarii sectiilor existente in program.
+Atentie! Modificarea sau stergerea unei sectii este posibila doar daca nu a fost folosita, adica daca nu este atribuita unui utilizator din baza de date.
+'''
+
 class FereastraSectii(tkinter.Toplevel):
     def __init__(self, master): # Initializare constructor pentru clasa Fereastra Sectii (reprezinta tkinter.TopLevel - clasa copil pentru tkinter.Tk)
         super().__init__(master) # Initializare constructor pentru clasa parinte (adica pentru clasa MeniuPrincipal - care reprezinta tkinter.Tk (clasa principala - radacina))

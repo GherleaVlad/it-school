@@ -1,8 +1,7 @@
 
 '''
-Modulul baza_de_date reprezinta fisierul .py in care sunt stocate toate operatiunile legate de baza de date si anume operatiunea de conectare,
+Modulul baza_de_date reprezinta fisierul .py in care sunt stocate toate operatiunile legate de baza de date si anume operatiunea de conectare, operatiunile de creare a structurii tabelei
 respectiv operatiunile CRUD (create, read, update, delete).
-
 '''
 
 import sqlite3
@@ -28,11 +27,16 @@ def creare_tabela_operatori():
                        IdOperator INTEGER PRIMARY KEY AUTOINCREMENT,
                        utilizator TEXT,
                        parola TEXT,
+                       nume TEXT,
+                       prenume TEXT,
                        administrator INTEGER)''')
         conexiune.commit()
 
-
 def creare_tabela_pacienti():
+    '''
+    Functia folosita pentru crearea tabelei unde vor fi stocati pacientii in baza de date.
+    IdPacient este cheia primara a tabelei Pacienti. Restul coloanelor reprezinta entry-urile introduse de catre utilizator
+    '''
     with conectare_baza_date() as conexiune:
         cursor = conexiune.cursor()
         cursor.execute('''
@@ -43,14 +47,66 @@ def creare_tabela_pacienti():
                        data_nastere TEXT,
                        varsta INTEGER,
                        CNP INTEGER,
-                       sectie TEXT)''')
+                       sex TEXT,
+                       sectie TEXT,
+                       medic_trimitator TEXT,
+                       bilte_trimitere TEXT,
+                       medic_curant TEXT,
+                       diagnostic TEXT)
+                       ''')
         conexiune.commit()
 
+def creare_tabela_sectii():
+    '''
+    Functia folosita pentru crearea tabelei Sectii in care vor fi stocate sectiile clinicii.
+    '''
+    with conectare_baza_date() as conexiune:
+        cursor = conexiune.cursor()
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Sectii(
+                       IdSectie INTEGER PRIMARY KEY AUTOINCREMENT,
+                       Denumire TEXT)''')
+        conexiune.commit()
 
+def creare_tabela_medici_trimitatori():
+    '''
+    Functia folosita pentru crearea tabelei Medici_Trimitatori in care vor fi stocati medicii trimitatori (nomenclator national de medici).
+    '''
+    with conectare_baza_date() as conexiune:
+        cursor = conexiune.cursor()
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Medici_Trimitatori(
+                       IdMedicTrimitator INTEGER PRIMARY KEY AUTOINCREMENT,
+                       Nume TEXT,
+                       Prenume TEXT,
+                       Parafa TEXT)''')
+        conexiune.commit()
 
-
+def creare_tabela_medici_curanti():
+    '''
+    Functia folosita pentru crearea tabelei Medici_Curanti in care vor fi medicii curanti (medicii din cadrul clinicii).
+    '''
+    with conectare_baza_date() as conexiune:
+        cursor = conexiune.cursor()
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS Medici_Curanti(
+                       IdMedicCurant INTEGER PRIMARY KEY AUTOINCREMENT,
+                       Nume TEXT,
+                       Prenume TEXT,
+                       Parafa TEXT)''')
+        conexiune.commit()
 
 # Functii pentru operatiuni CRUD (create, read, update, delete) pentru tabelele pacienti si operatori
+
+
+# Functia folosita pentru adaugarea pacientilor in baza de date
+def adaugare_pacient():
+    with conectare_baza_date() as conexiune:
+        cursor = conexiune.cursor()
+        cursor.execute('''INSERT INTO Pacienti (nume, prenume, data_nastere, varsta, CNP, sex, sectie, medic_trimitator, bilet_trimitere, medic_curant, diagnostic)
+                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                       ''')
+        conexiune.commit()
 
 # Functia folosita pentru autentificarea in aplicatie
 def cautare_operator(utilizator, parola): 

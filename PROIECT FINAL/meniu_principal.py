@@ -7,6 +7,15 @@ from fereastra_rapoarte import FereastraRapoarte
 from fereastra_operatori import FereastraOperatori
 from fereastra_sectii import FereastraSectii
 
+'''
+Modulul meniu_principal contine clasa MeniuPrincipal a aplicatiei si care reprezinta meniul de baza din care utilizatorul isi selecteaza operatiunile dorite in program.
+Fereastra care contine meniul principal se deschide sub doua forme, in functie de drepturile utilizatorului care se autentifica in aplicatie.
+Si anume, daca utilizatorul se conecteaza cu un utilizator cu drepturi de administrator are acces si la sectiunea Pacienti care contine operatiunile ce pot fi efectuate asupra pacientilor:
+Introducere date, salvare, adaugare date ce tin de internare, adaugare date de externare, vizualizare pacienti internati in clinica si generare de rapoarte; insa totodata are acces si asupra sectiunii
+de administrare, pe cand utilizatorul fara drepturi de administrator (operatorul simplu de date) are acces doar la operatiunile de adaugare, vizualizare de date.
+'''
+
+
 class MeniuPrincipal(tkinter.Tk):
     def __init__(self): # Initializare constructor pentru clasa MeniuPrincipal
         super().__init__()
@@ -25,6 +34,13 @@ class MeniuPrincipal(tkinter.Tk):
         frame_sigla.grid(row=0,column=0,padx=1,pady=(0,20))
         tkinter.Label(frame_sigla, text='+', font=("Arial", 120, "bold"), fg='red').pack(pady=2)
         tkinter.Label(frame_sigla, text='MEDICARE APP', font=("Arial", 15, "bold"), fg='red').pack(pady=2)
+
+        # Frame afisaz date
+        frame_date = tkinter.Frame(self)
+        frame_date.grid(row=0,column=2,padx=(0,20))
+
+        tkinter.Label(frame_date,text=f'Data: {utilities.data_curenta()}',font=("Arial", 10, "bold")).pack()
+        tkinter.Label(frame_date,text=f'Operator: ',font=("Arial", 10, "bold")).pack()
 
         frame_pacienti = tkinter.LabelFrame(self,text='Pacienti',font=("Arial", 10, "bold"))
         frame_pacienti.grid(row=1,column=0,padx=(20,0),pady=5)

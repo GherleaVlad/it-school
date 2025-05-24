@@ -65,7 +65,8 @@ def creare_tabela_sectii():
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS Sectii(
                        IdSectie INTEGER PRIMARY KEY AUTOINCREMENT,
-                       Denumire TEXT)''')
+                       denumire TEXT,
+                       sef_sectie TEXT)''')
         conexiune.commit()
 
 def creare_tabela_medici_trimitatori():
@@ -77,9 +78,9 @@ def creare_tabela_medici_trimitatori():
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS Medici_Trimitatori(
                        IdMedicTrimitator INTEGER PRIMARY KEY AUTOINCREMENT,
-                       Nume TEXT,
-                       Prenume TEXT,
-                       Parafa TEXT)''')
+                       nume TEXT,
+                       prenume TEXT,
+                       parafa TEXT)''')
         conexiune.commit()
 
 def creare_tabela_medici_curanti():
@@ -91,9 +92,9 @@ def creare_tabela_medici_curanti():
         cursor.execute('''
         CREATE TABLE IF NOT EXISTS Medici_Curanti(
                        IdMedicCurant INTEGER PRIMARY KEY AUTOINCREMENT,
-                       Nume TEXT,
-                       Prenume TEXT,
-                       Parafa TEXT)''')
+                       nume TEXT,
+                       prenume TEXT,
+                       parafa TEXT)''')
         conexiune.commit()
 
 # Functii pentru operatiuni CRUD (create, read, update, delete) pentru tabelele pacienti si operatori

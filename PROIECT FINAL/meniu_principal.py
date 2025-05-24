@@ -23,6 +23,7 @@ class MeniuPrincipal(tkinter.Tk):
         self.geometry(utilities.pozitionare_fereastra_pe_ecran(self,800,600))
         self.resizable(False, False)
         self.withdraw()
+        self.utilizator_autentificat = None
         self.autentificare = FereastraAutentificare(self)
 
     def deschide_meniu_principal_admin(self):
@@ -40,7 +41,9 @@ class MeniuPrincipal(tkinter.Tk):
         frame_date.grid(row=0,column=2,padx=(0,20))
 
         tkinter.Label(frame_date,text=f'Data: {utilities.data_curenta()}',font=("Arial", 10, "bold")).pack()
-        tkinter.Label(frame_date,text=f'Operator: ',font=("Arial", 10, "bold")).pack()
+
+        nume_prenume_utilizator = 'test' # f"{self.utilizator_autentificat[3]} {self.utilizator_autentificat[4]}"
+        tkinter.Label(frame_date,text=f'Operator: {nume_prenume_utilizator}',font=("Arial", 10, "bold")).pack()
 
         frame_pacienti = tkinter.LabelFrame(self,text='Pacienti',font=("Arial", 10, "bold"))
         frame_pacienti.grid(row=1,column=0,padx=(20,0),pady=5)

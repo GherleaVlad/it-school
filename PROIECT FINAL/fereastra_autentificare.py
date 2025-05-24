@@ -49,13 +49,14 @@ class FereastraAutentificare(tkinter.Toplevel):
             self.destroy()  # Inchide fereastra de login
             self.master.deschide_meniu_principal_admin()  # Apeleaza metoda din aplicatia principala
 
-        # if date_utilizator[3] == 1:
-        #     self.destroy()  # Inchide fereastra de login
-        #     self.master.deschide_meniu_principal_admin()  # Apeleaza metoda din aplicatia principala
+        # if date_utilizator:
+        #     self.master.utilizator_autentificat = date_utilizator  # Salvăm utilizatorul în clasa MeniuPrincipal
 
-        # elif date_utilizator[3] != 1:
-        #     self.destroy()  # Inchide fereastra de login
-        #     self.master.deschide_meniu_principal_operator()
+        #     self.destroy()  # Închidem fereastra de login
+
+        #     if date_utilizator[5] == 1:  # Dacă este admin
+        #         self.master.deschide_meniu_principal_admin()
+        #     else:  # Operator normal
+        #         self.master.deschide_meniu_principal_operator()
         else:
-            self.eroare_autentificare.config(text= 'Utilizator sau parola gresita!') # Mesajul de eroare afisat in cazul in care utilizatorul si parola nu se potrivesc
-
+            self.eroare_autentificare.config(text='Utilizator sau parola gresita!')

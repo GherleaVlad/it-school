@@ -27,10 +27,12 @@ class FereastraPacient(tkinter.Toplevel):
         # ADAUGAREA FRAMEURILOR DEFINITE IN CLASE IN TABUL AFERENT FIECAREI OPERATIUNI
         self.frame_date_pacient = DatePacient(self.notebook)
         self.frame_internare = Internare(self.notebook)
+        self.frame_externare = Externare(self.notebook)
 
         # POZITIONARE EFECTIVA IN APLICATIE PENTRU TAB-URI
         self.notebook.add(self.frame_date_pacient, text='Date Pacient')
         self.notebook.add(self.frame_internare, text='Internare')
+        self.notebook.add(self.frame_externare, text='Externare')
 
 class DatePacient(ttk.Frame):
     def __init__(self, parent):
@@ -127,3 +129,9 @@ class Internare(ttk.Frame):
         self.frame_date_personale = tkinter.Frame(self)
         self.frame_date_personale.grid(column=0, row=0, padx=(10,20), pady=(10,10))
 
+class Externare(ttk.Frame):
+    def __init__(self, parent):
+        super().__init__(parent)
+        # FRAME-UL CARE CONTINE DATELE PERSONALE ALE PACIENTULUI
+        self.frame_date_personale = tkinter.Frame(self)
+        self.frame_date_personale.grid(column=0, row=0, padx=(10,20), pady=(10,10))
